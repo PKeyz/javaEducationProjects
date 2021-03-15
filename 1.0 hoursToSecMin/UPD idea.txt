@@ -1,0 +1,78 @@
+more conversions with diff datatypes like
+sec&min to hours in floats.
+
+
+
+
+
+
+
+
+import java.util.Scanner;
+
+public class hoursConverter {
+
+    static Scanner sc = new Scanner(System.in);
+
+    public static int chooseConversion() {
+        //ask user for input
+        System.out.println("What time would you like to convert?");
+        System.out.println("[1] I want to convert hours to minutes.");
+        System.out.println("[2] I want to convert hours to seconds.");
+        System.out.println("[3] I want to convert minutes to seconds.");
+        System.out.println("[4] I want to convert minutes to hours.");
+        System.out.println("[5] I want to convert seconds to minutes");
+        System.out.println("[6] I want to convert seconds to hours");
+        System.out.println("[7] I don't want to convert anything.");
+
+        //UserInput as int
+        Scanner sc = new Scanner(System.in);
+        int scanned = sc.nextInt();
+
+        switch (scanned){
+            case 1:
+                System.out.println(hoursMinutes());
+                break;
+            case 2:
+
+        }
+    }
+
+    public static int hoursMinutes (int h) {
+        h = sc.nextInt();
+        int m;
+        m = h * 60;
+        return m;
+    }
+    public static int hoursSeconds (int h){
+        int s;
+        s = h * 3600;
+        return s;
+    }
+    public static int minutesSeconds (int m){
+        int s;
+        s = m * 60;
+        return s;
+    }
+    public static int minutesHours (int m){
+        int s;
+        h = m / 60;
+        return h;
+    }
+    public static int secondsMinutes (int s){
+        int s;
+        s = m * 60;
+        return m;
+    }
+    public static int secondsHours (int s){
+        int s;
+        s = m * 60;
+        return h;
+    }
+
+    public static void main(String[] args) {
+
+        int h = sc.nextInt();
+        System.out.println(h + " Hours is " + hoursMinutes(h) + " minutes.");
+    }
+}
