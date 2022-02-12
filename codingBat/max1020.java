@@ -28,3 +28,4 @@ public int max1020(int a, int b) {
 }
 
 
+// I tried it again and I understood their solution - it makes so much sense! 
