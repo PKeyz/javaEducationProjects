@@ -1,8 +1,6 @@
 /*
     print a number entered by the user in Java. The integer is stored in a variable 
     using System.in, and is displayed on the screen using System.out.
-
-
 */
 
 
