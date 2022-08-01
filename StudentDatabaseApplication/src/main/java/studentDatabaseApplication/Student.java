@@ -37,20 +37,19 @@ App requirements:
 
     private String studentName;
     private int studentYear;
-    private String studentRank;
-    private ArrayList <Courses> enrolledList;
-    private UUID studentUUID;
+    private ArrayList<Courses> enrolledList;
+    private final UUID studentUUID;
     private int balance;
     private int tuition;
 
-    public Student(String studentName, int studentYear){
+    public Student(String studentName, int studentYear) {
         this.studentName = studentName;
         this.studentYear = studentYear;
         this.studentUUID = UUID.randomUUID();
     }
 
-    public void setEnrolledList (String course){
-        if(!enrolledList.contains(course) ){
+    public void setEnrolledList(String course) {
+        if (!enrolledList.contains(course)) {
             enrolledList.add(Courses.valueOf(course));
 
             getTuition();
@@ -58,39 +57,18 @@ App requirements:
         }
     }
 
-    public ArrayList <Courses> getEnrolledList(){
+    public ArrayList<Courses> getEnrolledList() {
         return enrolledList;
     }
 
-    public UUID getStudentUUID(){
+    public UUID getStudentUUID() {
         return studentUUID;
     }
 
-    /*
-    public void setStudentRank (int studentYear){
-        switch (studentYear){
-            case 1:
-                studentRank = "Freshman";
-                break;
-            case 2:
-                studentRank = "Sophomore";
-                break;
-            case 3:
-                studentRank = "Senior";
-                break;
-        }
-    }
-    */
-    public int countTuition(){
+    public void countTuition() {
         int amountCourses = getEnrolledList().size();
-        int tuition = amountCourses * 600;
-        return tuition;
+        setTuition(amountCourses * 600);
     }
-
-    public String getStudentRank(){
-        return studentRank;
-    }
-
     public String getStudentName() {
         return studentName;
     }
@@ -103,6 +81,21 @@ App requirements:
         return studentYear;
     }
 
+    public String getStudentRank() {
+        String studentRank = new String();
+        switch (studentYear){
+            case 1:
+                studentRank = "Freshman";
+                break;
+            case 2:
+                studentRank = "Sophomore";
+                break;
+            case 3:
+                studentRank = "Senior";
+                break;
+        }
+        return studentRank;
+    }
     public void setStudentYear(int studentYear) {
         this.studentYear = studentYear;
     }
@@ -122,4 +115,5 @@ App requirements:
     public void setTuition(int tuition) {
         this.tuition = tuition;
     }
+
 }
