@@ -30,6 +30,17 @@ App requirements:
 - to see status of student we should see their : name/id/courses/balance
  */
 
+
+/*
+features needed further to perfect application:
+
+1. add studentSecondName in Student and each class and constructor! / separate scanners for studentSecondName
+2. add "see the course-list" feature
+3. add "add courses" feature
+4. switch(action) 2 : format the output as " Name: x \nFamily name: y \nStudent UUID : z "
+5.
+ */
+
 public class Main {
     public static void main(String[] args) {
 
@@ -39,17 +50,18 @@ public class Main {
         while(isEntering){
             Scanner scanner = new Scanner(System.in);
 
-            System.out.println("\nWelcome to the StudentDatabaseApplication\nPress a number for the action you want to take.\nPress 1 to add new students to the database.\nPress 2 to see all the students in the database.\nPress 3 to see the courses of a student.\nPress 4 to see the balance of a student.\nPress 5 to see the tuition fees of a student.\nPress 6 to see the status of a student.\nPress 7 to exit the application.");
-            System.out.println("Enter your option here: ");
-            /*
-            System.out.println("Press a number for the action you want to take.\n");
-            System.out.println("Press 1 to add new students to the database.");
-            System.out.println("Press 2 to see the courses of a student.");
-            System.out.println("Press 3 to see the balance of a student.");
-            System.out.println("Press 4 to see the tuition fees of a student.");
-            System.out.println("Press 5 to see the status of a student.");
-            System.out.println("Press 6 to exit the application.");
-            */
+            System.out.println("\n" +
+                    "Welcome to the StudentDatabaseApplication\n" +
+                    "Press a number for the action you want to take.\n" +
+                    "Press 1 to add new students to the database.\n" +
+                    "Press 2 to see all the students in the database.\n" +
+                    "Press 3 to see the courses of a student.\n" +
+                    "Press 4 to see the balance of a student.\n" +
+                    "Press 5 to see the tuition fees of a student.\n" +
+                    "Press 6 to see the status of a student.\n" +
+                    "Press 7 to exit the application.\n" +
+                    "Enter your option here: \n");
+
             int action = scanner.nextInt();
 
             switch (action){

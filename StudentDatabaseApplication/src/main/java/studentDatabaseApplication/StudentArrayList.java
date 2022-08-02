@@ -47,7 +47,6 @@ public class StudentArrayList {
     public void printStudents(){
         for(Student student : studentArrayList){
             System.out.println(student.getStudentName() + " " + student.getStudentRank() + " " + student.getStudentUUID());
-            //System.out.println(student.getStudentYear() + "\n");
         }
     }
     public Student getStudentFromArrayList(String studentName, int studentYear) {
