@@ -38,9 +38,10 @@ public class Main {
 
         while(isEntering){
             Scanner scanner = new Scanner(System.in);
-            //StudentArrayList studentArrayList = new StudentArrayList();
 
-            System.out.println("\nWelcome to the StudentDatabaseApplication");
+            System.out.println("\nWelcome to the StudentDatabaseApplication\nPress a number for the action you want to take.\nPress 1 to add new students to the database.\nPress 2 to see all the students in the database.\nPress 3 to see the courses of a student.\nPress 4 to see the balance of a student.\nPress 5 to see the tuition fees of a student.\nPress 6 to see the status of a student.\nPress 7 to exit the application.");
+            System.out.println("Enter your option here: ");
+            /*
             System.out.println("Press a number for the action you want to take.\n");
             System.out.println("Press 1 to add new students to the database.");
             System.out.println("Press 2 to see the courses of a student.");
@@ -48,7 +49,7 @@ public class Main {
             System.out.println("Press 4 to see the tuition fees of a student.");
             System.out.println("Press 5 to see the status of a student.");
             System.out.println("Press 6 to exit the application.");
-
+            */
             int action = scanner.nextInt();
 
             switch (action){
@@ -60,14 +61,17 @@ public class Main {
                     for (int i = 0; i < amountStudentsAdded; i++){
                         System.out.println("Enter the name of the student.");
                         String studentName = scanner.next();
-
                         System.out.println("Enter the year of study as a number:\nFreshman: 1\nSophomore: 2\nSenior: 3");
                         int studentYear = scanner.nextInt();
 
                         studentArrayList.setStudentArrayList(studentName,studentYear);
                     }
+                    System.out.println("New students have been added.\n");
                     break;
                 case 2:
+                    studentArrayList.printStudents();
+                    break;
+                case 3:
                     System.out.println("Enter the name of the student.\n");
                     String studentName = scanner.nextLine();
 
@@ -76,7 +80,7 @@ public class Main {
 
                     studentArrayList.getStudentCoursesFromArrayList(studentName,studentYear);
                     break;
-                case 3:
+                case 4:
                     System.out.println("Enter the name of the student.\n");
                     studentName = scanner.nextLine();
 
@@ -86,7 +90,7 @@ public class Main {
                     int currentStudentBalance = studentArrayList.getStudentFromArrayList(studentName,studentYear).getBalance();
                     System.out.println("The balance of the student is " + currentStudentBalance);
                     break;
-                case 4:
+                case 5:
                     System.out.println("Enter the name of the student.\n");
                     studentName = scanner.nextLine();
 
@@ -96,7 +100,7 @@ public class Main {
                     int currentStudentTuition = studentArrayList.getStudentFromArrayList(studentName,studentYear).getTuition();
                     System.out.println("The balance of the student is " + currentStudentTuition);
                     break;
-                case 5:
+                case 6:
                     System.out.println("Enter the name of the student.\n");
                     studentName = scanner.nextLine();
 
@@ -106,7 +110,7 @@ public class Main {
 
                     System.out.println("The status of the student is " + currentStatus +"\n");
                     break;
-                case 6:
+                case 7:
                     System.out.println("Thank you for visiting. You're now exiting the application");
                     isEntering = false;
                 default:

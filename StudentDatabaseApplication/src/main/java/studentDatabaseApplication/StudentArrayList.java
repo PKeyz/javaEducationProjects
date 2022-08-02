@@ -3,66 +3,53 @@ package studentDatabaseApplication;
 import java.util.ArrayList;
 
 public class StudentArrayList {
-    private static ArrayList <Student> studentArrayList;
-    public StudentArrayList(){
+    private ArrayList<Student> studentArrayList = new ArrayList<>();
+
+    public StudentArrayList() {
 
     }
 
-    /*
-     public void setStudentArrayList(String studentName, int studentYear) {
-        if(studentArrayList == null){
-            Student student = new Student(studentName,studentYear);
+    public void setStudentArrayList(ArrayList<Student> studentArrayList) {
+        this.studentArrayList = studentArrayList;
+    }
+
+    public ArrayList<Student> setStudentArrayList(String studentName, int studentYear) {
+        if (studentArrayList.size() == 0) {
+            Student student = new Student(studentName, studentYear);
             studentArrayList.add(student);
-        }
-        else{
-            for(Student student : studentArrayList){
-                if((student.getStudentName().equals(studentName)) && (student.getStudentYear() == studentYear)){
+        } else {
+            for (Student student : studentArrayList) {
+                if (((student.getStudentName().equals(studentName) && student.getStudentYear() == studentYear) && studentArrayList.contains(student))) {
                     System.out.println("This student is already in the database.");
-                }
-                else{
-                    student = new Student(studentName,studentYear);
+                    break;
+                } else {
+                    student = new Student(studentName, studentYear);
                     studentArrayList.add(student);
+                    break;
                 }
             }
         }
+        return studentArrayList;
     }
-     */
 
-    public void setStudentArrayList (String studentName, int studentYear){
-        try {
-            if(studentArrayList.size() != 0){
-                for(Student student : studentArrayList){
-                    if((student.getStudentName().equals(studentName)) && (student.getStudentYear() == studentYear)){
-                        System.out.println("This student is already in the database.");
-                    }
-                    else{
-                        student = new Student(studentName,studentYear);
-                        studentArrayList.add(student);
-                    }
-                }
+    public void getStudentCoursesFromArrayList(String studentName, int studentYear) {
+        for (Student student : studentArrayList) {
+            if ((student.getStudentName().equals(studentName)) && (student.getStudentYear() == studentYear)) {
+                System.out.println(student.getEnrolledList() + "\n");
             }
-            else{
-                Student student = new Student(studentName,studentYear);
-                studentArrayList.add(student);
-            }
-        }
-        catch (NullPointerException e){
-            Student student = new Student(studentName,studentYear);
-            studentArrayList.add(student);
         }
     }
-     public void getStudentCoursesFromArrayList(String studentName,int studentYear) {
-         for(Student student : studentArrayList){
-             if((student.getStudentName().equals(studentName)) && (student.getStudentYear() == studentYear)){
-                 System.out.println(student.getEnrolledList() + "\n");
-             }
-         }
-     }
-     public boolean isStudentInArrayList(String studentName,int studentYear){
-        Student student = new Student(studentName,studentYear);
-         return studentArrayList.contains(student);
-     }
-    public Student getStudentFromArrayList(String studentName,int studentYear) {
+
+    public boolean isStudentInArrayList(String studentName, int studentYear) {
+        Student student = new Student(studentName, studentYear);
+        return studentArrayList.contains(student);
+    }
+    public void printStudents(){
+        for(Student student : studentArrayList){
+            System.out.println(student.getStudentName() + student.getStudentYear());
+        }
+    }
+    public Student getStudentFromArrayList(String studentName, int studentYear) {
         Student student = null;
 
         if (isStudentInArrayList(studentName, studentYear)) {
@@ -71,19 +58,6 @@ public class StudentArrayList {
         } else {
             System.out.println("There is no student with this name and year in the database.\nTry again.");
         }
-        /*
-            for(Student student : studentArrayList){
-            if((student.getStudentName().equals(studentName)) && (student.getStudentYear() == studentYear)){
-                System.out.println("You chose student: " + studentName + "\n");
-                return student;
-            }
-            else {
-                System.out.println("There is no student with this name and year in the database.\nTry again.");
-            }
-        }
-         */
-
         return student;
     }
-
- }
+}
