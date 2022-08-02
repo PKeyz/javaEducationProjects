@@ -20,7 +20,7 @@ public class StudentArrayList {
         } else {
             for (Student student : studentArrayList) {
                 if (((student.getStudentName().equals(studentName) && student.getStudentYear() == studentYear) && studentArrayList.contains(student))) {
-                    System.out.println("This student is already in the database.");
+                    System.out.println(studentName + "is already in the database.");
                     break;
                 } else {
                     student = new Student(studentName, studentYear);
@@ -46,7 +46,8 @@ public class StudentArrayList {
     }
     public void printStudents(){
         for(Student student : studentArrayList){
-            System.out.println(student.getStudentName() + student.getStudentYear());
+            System.out.println(student.getStudentName() + " " + student.getStudentRank() + " " + student.getStudentUUID());
+            //System.out.println(student.getStudentYear() + "\n");
         }
     }
     public Student getStudentFromArrayList(String studentName, int studentYear) {
