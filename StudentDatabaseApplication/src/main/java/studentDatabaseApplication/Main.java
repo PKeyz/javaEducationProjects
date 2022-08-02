@@ -38,7 +38,7 @@ features needed further to perfect application:
 2. add "see the course-list" feature
 3. add "add courses" feature
 4. switch(action) 2 : format the output as " Name: x \nFamily name: y \nStudent UUID : z "
-5.
+5. 
  */
 
 public class Main {
