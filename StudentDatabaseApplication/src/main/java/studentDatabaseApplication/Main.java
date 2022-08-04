@@ -70,7 +70,7 @@ public class Main {
                     Enter your option here:\s
                     """);
 
-            int action = scanner.nextInt();
+           int action = scanner.nextInt();
 
             switch (action){
                 case 1:
@@ -86,12 +86,17 @@ public class Main {
                         System.out.println("Enter the year of study as a number:\nFreshman: 1\nSophomore: 2\nSenior: 3");
                         int studentYear = scanner.nextInt();
 
-                        studentArrayList.setStudentArrayList(studentFirstName,studentLastName,studentYear);
+                        StudentArrayList.setStudentArrayList(studentFirstName,studentLastName,studentYear);
                     }
                     System.out.println("New students have been added.\n");
                     break;
                 case 2:
-                    studentArrayList.printStudents();
+                    if(studentArrayList.seeListSize() == 0){
+                        System.out.println("Student database is empty");
+                    }
+                    else{
+                        studentArrayList.printStudents();
+                    }
                     break;
                 case 3:
                     System.out.println("Enter the first name of the student.");
@@ -100,7 +105,7 @@ public class Main {
                     System.out.println("Enter the last name of the student.");
                     String studentLastName = scanner.next();
 
-                    System.out.println("Enter the year of study.\n");
+                    System.out.println("Enter the year of study.");
                     int studentYear = scanner.nextInt();
                     /*
                     if student in array - ask further
@@ -109,10 +114,10 @@ public class Main {
                     Student student = studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear);
 
                     List<Courses> coursesList = new ArrayList<>(EnumSet.allOf(Courses.class));
-                    System.out.println("This is the list of possible courses to choose from, please enter the title of one course name to assign in.\n" + coursesList);
+                    System.out.println("This is the list of possible courses to choose from, please enter the title of one course name to assign in.\nEach application costs 600$ which will be received from your deposit.\n" + coursesList);
                     String courseName = scanner.nextLine();
 
-                    System.out.println("Student " + studentFirstName + " " + studentLastName + " should be enrolled into course " + courseName + "?\nPlease enter 1 for YES and 2 for NO\n");
+                    System.out.println("Student " + studentFirstName + " " + studentLastName + " should be enrolled into course " + courseName + "?\nPlease enter 1 for YES and 2 for NO");
                     int courseEnrollmentChoice = scanner.nextInt();
 
                     if(courseEnrollmentChoice == 0){

@@ -13,7 +13,7 @@ public class StudentArrayList {
         StudentArrayList.studentArrayList = studentArrayList;
     }
 
-    public static ArrayList<Student> setStudentArrayList(String studentFirstName, String studentLastName, int studentYear) {
+    public static void setStudentArrayList(String studentFirstName, String studentLastName, int studentYear) {
         if (studentArrayList.size() == 0) {
             Student student = new Student(studentFirstName,studentLastName, studentYear);
             studentArrayList.add(student);
@@ -29,7 +29,6 @@ public class StudentArrayList {
                 }
             }
         }
-        return studentArrayList;
     }
 
     public void getStudentCoursesFromArrayList(String studentFirstName,String studentLastName, int studentYear) {
@@ -50,14 +49,20 @@ public class StudentArrayList {
         }
     }
     public Student getStudentFromArrayList (String studentFirstName,String studentLastName, int studentYear) {
-        Student student = null;
+        Student student1 = null;
+        for(Student student : studentArrayList){
+            if (student.getStudentFirstName().equals(studentFirstName) && student.getStudentLastName().equals(studentLastName) && studentYear == studentYear) {
+                student = student1;
 
-        if (isStudentInArrayList(studentFirstName,studentLastName, studentYear)) {
-            student = new Student(studentFirstName,studentLastName, studentYear);
-
-        } else {
-            System.out.println("There is no student with this name and year in the database.\nTry again.");
+            } else {
+                System.out.println("There is no student with this name and year in the database.\nTry again.");
+            }
         }
-        return student;
+
+        return student1;
+    }
+
+    public int seeListSize(){
+        return studentArrayList.size();
     }
 }

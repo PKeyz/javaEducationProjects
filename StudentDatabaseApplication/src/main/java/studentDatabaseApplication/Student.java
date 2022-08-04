@@ -39,10 +39,12 @@ App requirements:
     private String studentLastName;
     private int studentYear;
     private ArrayList<Courses> enrolledList;
-    private final UUID studentUUID;
+    private UUID studentUUID = null;
     private int balance;
     private int tuition;
 
+    public Student(){
+    }
     public Student(String studentFirstName,String studentLastName, int studentYear) {
         this.studentFirstName = studentFirstName;
         this.studentLastName = studentLastName;
