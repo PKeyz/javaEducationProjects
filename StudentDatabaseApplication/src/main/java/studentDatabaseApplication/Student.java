@@ -35,15 +35,17 @@ App requirements:
 - to see status of student we should see their : name/id/courses/balance
  */
 
-    private String studentName;
+    private String studentFirstName;
+    private String studentLastName;
     private int studentYear;
     private ArrayList<Courses> enrolledList;
     private final UUID studentUUID;
     private int balance;
     private int tuition;
 
-    public Student(String studentName, int studentYear) {
-        this.studentName = studentName;
+    public Student(String studentFirstName,String studentLastName, int studentYear) {
+        this.studentFirstName = studentFirstName;
+        this.studentLastName = studentLastName;
         this.studentYear = studentYear;
         this.studentUUID = UUID.randomUUID();
     }
@@ -69,12 +71,19 @@ App requirements:
         int amountCourses = getEnrolledList().size();
         setTuition(amountCourses * 600);
     }
-    public String getStudentName() {
-        return studentName;
+    public String getStudentFirstName() {
+        return studentFirstName;
     }
 
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
+    public void setStudentFirstName(String studentFirstName) {
+        this.studentFirstName = studentFirstName;
+    }
+    public String getStudentLastName() {
+        return studentLastName;
+    }
+
+    public void setStudentLastName(String studentLastName) {
+        this.studentLastName = studentLastName;
     }
 
     public int getStudentYear() {
@@ -85,7 +94,7 @@ App requirements:
         String studentRank = new String();
         switch (studentYear){
             case 1:
-                studentRank = "Freshman";
+                studentRank = "Freshmen";
                 break;
             case 2:
                 studentRank = "Sophomore";

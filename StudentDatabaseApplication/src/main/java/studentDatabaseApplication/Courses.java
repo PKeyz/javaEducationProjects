@@ -13,4 +13,9 @@ public enum Courses {
     Courses(String courseName) {
         this.courseName = courseName;
     }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
 }

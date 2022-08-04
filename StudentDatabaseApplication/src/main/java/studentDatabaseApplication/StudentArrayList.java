@@ -3,27 +3,27 @@ package studentDatabaseApplication;
 import java.util.ArrayList;
 
 public class StudentArrayList {
-    private ArrayList<Student> studentArrayList = new ArrayList<>();
+    private static ArrayList<Student> studentArrayList = new ArrayList<>();
 
     public StudentArrayList() {
 
     }
 
     public void setStudentArrayList(ArrayList<Student> studentArrayList) {
-        this.studentArrayList = studentArrayList;
+        StudentArrayList.studentArrayList = studentArrayList;
     }
 
-    public ArrayList<Student> setStudentArrayList(String studentName, int studentYear) {
+    public static ArrayList<Student> setStudentArrayList(String studentFirstName, String studentLastName, int studentYear) {
         if (studentArrayList.size() == 0) {
-            Student student = new Student(studentName, studentYear);
+            Student student = new Student(studentFirstName,studentLastName, studentYear);
             studentArrayList.add(student);
         } else {
             for (Student student : studentArrayList) {
-                if (((student.getStudentName().equals(studentName) && student.getStudentYear() == studentYear) && studentArrayList.contains(student))) {
-                    System.out.println(studentName + "is already in the database.");
+                if (((student.getStudentFirstName().equals(studentFirstName) && student.getStudentLastName().equals(studentLastName) && student.getStudentYear() == studentYear) && studentArrayList.contains(student))) {
+                    System.out.println(studentFirstName + " " + studentLastName + "is already in the database.");
                     break;
                 } else {
-                    student = new Student(studentName, studentYear);
+                    student = new Student(studentFirstName,studentLastName, studentYear);
                     studentArrayList.add(student);
                     break;
                 }
@@ -32,28 +32,28 @@ public class StudentArrayList {
         return studentArrayList;
     }
 
-    public void getStudentCoursesFromArrayList(String studentName, int studentYear) {
+    public void getStudentCoursesFromArrayList(String studentFirstName,String studentLastName, int studentYear) {
         for (Student student : studentArrayList) {
-            if ((student.getStudentName().equals(studentName)) && (student.getStudentYear() == studentYear)) {
+            if (((student.getStudentFirstName().equals(studentFirstName) && student.getStudentLastName().equals(studentLastName) && student.getStudentYear() == studentYear) && studentArrayList.contains(student))) {
                 System.out.println(student.getEnrolledList() + "\n");
             }
         }
     }
 
-    public boolean isStudentInArrayList(String studentName, int studentYear) {
-        Student student = new Student(studentName, studentYear);
+    public boolean isStudentInArrayList(String studentFirstName,String studentLastName, int studentYear) {
+        Student student = new Student(studentFirstName,studentLastName, studentYear);
         return studentArrayList.contains(student);
     }
     public void printStudents(){
         for(Student student : studentArrayList){
-            System.out.println(student.getStudentName() + " " + student.getStudentRank() + " " + student.getStudentUUID());
+            System.out.println(student.getStudentFirstName() + " " + student.getStudentLastName() + " " + student.getStudentRank() + " " + student.getStudentUUID());
         }
     }
-    public Student getStudentFromArrayList(String studentName, int studentYear) {
+    public Student getStudentFromArrayList (String studentFirstName,String studentLastName, int studentYear) {
         Student student = null;
 
-        if (isStudentInArrayList(studentName, studentYear)) {
-            student = new Student(studentName, studentYear);
+        if (isStudentInArrayList(studentFirstName,studentLastName, studentYear)) {
+            student = new Student(studentFirstName,studentLastName, studentYear);
 
         } else {
             System.out.println("There is no student with this name and year in the database.\nTry again.");
