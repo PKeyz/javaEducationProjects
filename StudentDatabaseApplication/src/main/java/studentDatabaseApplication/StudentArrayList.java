@@ -43,6 +43,7 @@ public class StudentArrayList {
         Student student = new Student(studentFirstName,studentLastName, studentYear);
         return studentArrayList.contains(student);
     }
+    //.equals getStudentFromArrayList method?
     public void printStudents(){
         for(Student student : studentArrayList){
             System.out.println(student.getStudentFirstName() + " " + student.getStudentLastName() + " " + student.getStudentRank() + " " + student.getStudentUUID());
@@ -51,15 +52,13 @@ public class StudentArrayList {
     public Student getStudentFromArrayList (String studentFirstName,String studentLastName, int studentYear) {
         Student student1 = null;
         for(Student student : studentArrayList){
-            if (student.getStudentFirstName().equals(studentFirstName) && student.getStudentLastName().equals(studentLastName) && studentYear == studentYear) {
-                student = student1;
-
-            } else {
-                System.out.println("There is no student with this name and year in the database.\nTry again.");
+            if (student.getStudentFirstName().equals(studentFirstName) && student.getStudentLastName().equals(studentLastName) && student.getStudentYear() == studentYear) {
+                student1 = student;
+                return student1;
             }
         }
-
-        return student1;
+        System.out.println("There is no such student in the database");
+        return null;
     }
 
     public int seeListSize(){

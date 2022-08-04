@@ -1,21 +1,31 @@
 package studentDatabaseApplication;
 
 public enum Courses {
-    HISTORY101 ("History 101"),
-    MATHEMATICS101 ("Mathematics 101"),
-    PHYSICS101 ("Physics 101"),
-    ENGLISH101 ("English 101"),
-    CHEMISTRY101 ("Chemistry 101"),
-    COMPUTERSCIENCE101 ("Computer Science 101");
+    HISTORY101 ("History"),
+    MATHEMATICS101 ("Mathematics"),
+    PHYSICS101 ("Physics"),
+    ENGLISH101 ("English"),
+    CHEMISTRY101 ("Chemistry"),
+    COMPUTERSCIENCE101 ("Computer Science");
 
-    private final String courseName;
+    private final String name;
 
-    Courses(String courseName) {
-        this.courseName = courseName;
+    Courses(String name) {
+        this.name = name;
     }
 
-    public String getCourseName() {
-        return courseName;
+    public String getName() {
+        return name;
     }
 
 }
+/*
+Environment(String envUrl) {
+        this.url = envUrl;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+ */

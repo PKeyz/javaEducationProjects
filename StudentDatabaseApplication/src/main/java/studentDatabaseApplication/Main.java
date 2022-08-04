@@ -67,8 +67,7 @@ public class Main {
                     Press 6 to see the tuition fees of a student.
                     Press 7 to see the status of a student.
                     Press 8 to exit the application.
-                    Enter your option here:\s
-                    """);
+                    Enter your option here:""");
 
            int action = scanner.nextInt();
 
