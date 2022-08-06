@@ -1,9 +1,6 @@
 package studentDatabaseApplication;
 
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /*
 Scenario:
@@ -31,10 +28,9 @@ App requirements:
 - each course costs 600$ to enroll
 - student can view their balance & pay their tuition
 - to see status of student we should see their : name/id/courses/balance
- */
 
+ --------:
 
-/*
 features needed further to perfect application:
 
 1. add studentSecondName in Student and each class and constructor! / separate scanners for studentSecondName
@@ -54,7 +50,6 @@ public class Main {
             Scanner scanner = new Scanner(System.in);
 
             System.out.println("""
-
                     Welcome to the StudentDatabaseApplication.
                     
                     Press a number for the action you want to take:
@@ -62,6 +57,7 @@ public class Main {
                     Press 2 to see all the students in the database.
                     Press 3 to enroll a student into a course.
                     Press 4 to see the courses of a student.
+                    //Press x to set balance of the student.
                     Press 5 to see the balance of a student.
                     //Press 6 to increase the balance of a student.
                     Press 6 to see the tuition fees of a student.
@@ -106,13 +102,10 @@ public class Main {
 
                     System.out.println("Enter the year of study.");
                     int studentYear = scanner.nextInt();
-                    /*
-                    if student in array - ask further
-                    else return no such student in database
-                     */
+
                     Student student = studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear);
 
-                    List<Courses> coursesList = new ArrayList<>(EnumSet.allOf(Courses.class));
+                    List<String> coursesList = new ArrayList<> (Collections.singleton(Courses.getPrintAllCourseValues().toString()));
                     System.out.println("This is the list of possible courses to choose from, please enter the title of one course name to assign in.\nEach application costs 600$ which will be received from your deposit.\n" + coursesList);
                     String courseName = scanner.nextLine();
 
