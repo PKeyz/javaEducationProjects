@@ -27,9 +27,9 @@ public class Student {
 if courses contains course && enrolledList !contains course -> enroll
  */
     public void setEnrolledList(String courseName) {
-        if ( Courses.isInCourseList(courseName)  && (!getEnrolledListString().contains(courseName)) & (!getEnrolledListString().contains(courseName))) {
+        if ( (Courses.getCourse(courseName) && (!getEnrolledListString().contains(courseName)) & (!getEnrolledListString().contains(courseName))) {
 
-            enrolledList.add(Courses.toCourse(courseName));
+            enrolledList.add(Courses.valueOf(courseName));
             enrolledListString.add(courseName);
 
             setBalance(balance - 600);

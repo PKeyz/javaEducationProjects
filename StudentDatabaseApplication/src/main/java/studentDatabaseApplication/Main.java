@@ -107,9 +107,8 @@ public class Main {
                     if(studentArrayList.getStudentArrayList().contains(studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear))){
                         Student student = studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear);
 
-                        System.out.println("This is the list of possible courses to choose from, please enter the title of one course name to assign in.\nEach application costs 600$, your balance will be adjusted accordingly.\n\n" + Courses.HISTORY101.getName()+"\n"+Courses.MATHEMATICS101.getName()+"\n"+Courses.PHYSICS101.getName()+"\n"+Courses.ENGLISH101.getName()+"\n"+Courses.CHEMISTRY101.getName()+"\n"+Courses.COMPUTERSCIENCE101.getName());
+                        System.out.println("This is the list of possible courses to choose from, please enter the title of one course name to assign in.\nEach application costs 600$, your balance will be adjusted accordingly.\n\n" + Courses.HISTORY101.getName()+"\n"+Courses.MATHEMATICS101.getName()+"\n"+Courses.PHYSICS101.getName()+"\n"+Courses.ENGLISH101.getName()+"\n"+Courses.CHEMISTRY101.getName()+"\n"+Courses.COMPUTERSCIENCE101.getName()+ "\n"+ "Should student " + studentFirstName + " " + studentLastName + " be enrolled in one of these courses? \nPlease enter 1 for YES and 2 for NO");
 
-                        System.out.println("Should student " + studentFirstName + " " + studentLastName + " be enrolled in one of these courses? \nPlease enter 1 for YES and 2 for NO");
                         int courseEnrollmentChoice = scanner.nextInt();
 
                         if(courseEnrollmentChoice == 0){
