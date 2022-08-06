@@ -5,15 +5,15 @@ import java.util.UUID;
 
 public class Student {
 
-
-
+    //private final ArrayList<String> courseList = new ArrayList<String>("History","Mathematics","Physics","English","");
     private String studentFirstName;
     private String studentLastName;
     private int studentYear;
-    private ArrayList<Courses> enrolledList;
+    private ArrayList<Courses> enrolledList = new ArrayList<>();
+    private ArrayList<String> enrolledListString = new ArrayList<>();
     private UUID studentUUID = null;
-    private int balance;
-    private int tuition;
+    private int balance = 0;
+    private int tuition = 0;
 
     public Student(){
     }
@@ -23,16 +23,29 @@ public class Student {
         this.studentYear = studentYear;
         this.studentUUID = UUID.randomUUID();
     }
+/*
+if courses contains course && enrolledList !contains course -> enroll
+ */
+    public void setEnrolledList(String courseName) {
+        if ( Courses.isInCourseList(courseName)  && (!getEnrolledListString().contains(courseName)) & (!getEnrolledListString().contains(courseName))) {
 
-    public void setEnrolledList(String course) {
-        if (!enrolledList.contains(course)) {
-            enrolledList.add(Courses.valueOf(course));
+            enrolledList.add(Courses.toCourse(courseName));
+            enrolledListString.add(courseName);
 
-            getTuition();
-            setBalance(balance - tuition);
+            setBalance(balance - 600);
+            setTuition(tuition + 600);
+        }
+        else{
+            System.out.println("The student is already enrolled in this course.");
         }
     }
+    public ArrayList <String> getEnrolledListString(){
 
+        for (Courses courses : enrolledList) {
+            enrolledListString.add(courses.getName());
+        }
+        return enrolledListString;
+    }
     public ArrayList<Courses> getEnrolledList() {
         return enrolledList;
     }
@@ -41,23 +54,12 @@ public class Student {
         return studentUUID;
     }
 
-    public void countTuition() {
-        int amountCourses = getEnrolledList().size();
-        setTuition(amountCourses * 600);
-    }
     public String getStudentFirstName() {
         return studentFirstName;
     }
 
-    public void setStudentFirstName(String studentFirstName) {
-        this.studentFirstName = studentFirstName;
-    }
     public String getStudentLastName() {
         return studentLastName;
-    }
-
-    public void setStudentLastName(String studentLastName) {
-        this.studentLastName = studentLastName;
     }
 
     public int getStudentYear() {
@@ -65,24 +67,14 @@ public class Student {
     }
 
     public String getStudentRank() {
-        String studentRank = new String();
-        switch (studentYear){
-            case 1:
-                studentRank = "Freshmen";
-                break;
-            case 2:
-                studentRank = "Sophomore";
-                break;
-            case 3:
-                studentRank = "Senior";
-                break;
-        }
+        String studentRank = switch (studentYear) {
+            case 1 -> "Freshmen";
+            case 2 -> "Sophomore";
+            case 3 -> "Senior";
+            default -> "Wrong input.";
+        };
         return studentRank;
     }
-    public void setStudentYear(int studentYear) {
-        this.studentYear = studentYear;
-    }
-
     public int getBalance() {
         return balance;
     }

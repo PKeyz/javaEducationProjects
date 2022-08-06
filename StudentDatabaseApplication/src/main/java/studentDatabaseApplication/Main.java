@@ -65,7 +65,8 @@ public class Main {
                     Press 8 to exit the application.
                     Enter your option here:""");
 
-           int action = scanner.nextInt();
+
+            int action = scanner.nextInt();
 
             switch (action){
                 case 1:
@@ -103,65 +104,69 @@ public class Main {
                     System.out.println("Enter the year of study.");
                     int studentYear = scanner.nextInt();
 
-                    Student student = studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear);
+                    if(studentArrayList.isStudentInArrayList(studentFirstName,studentLastName,studentYear)){
+                        Student student = studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear);
 
-                    List<String> coursesList = new ArrayList<> (Collections.singleton(Courses.getPrintAllCourseValues().toString()));
-                    System.out.println("This is the list of possible courses to choose from, please enter the title of one course name to assign in.\nEach application costs 600$ which will be received from your deposit.\n" + coursesList);
-                    String courseName = scanner.nextLine();
+                        System.out.println("This is the list of possible courses to choose from, please enter the title of one course name to assign in.\nEach application costs 600$, your balance will be adjusted accordingly.\n\n" + Courses.HISTORY101.getName()+"\n"+Courses.MATHEMATICS101.getName()+"\n"+Courses.PHYSICS101.getName()+"\n"+Courses.ENGLISH101.getName()+"\n"+Courses.CHEMISTRY101.getName()+"\n"+Courses.COMPUTERSCIENCE101.getName());
 
-                    System.out.println("Student " + studentFirstName + " " + studentLastName + " should be enrolled into course " + courseName + "?\nPlease enter 1 for YES and 2 for NO");
-                    int courseEnrollmentChoice = scanner.nextInt();
+                        System.out.println("Should student " + studentFirstName + " " + studentLastName + " be enrolled in one of these courses? \nPlease enter 1 for YES and 2 for NO");
+                        int courseEnrollmentChoice = scanner.nextInt();
 
-                    if(courseEnrollmentChoice == 0){
-                        break;
+                        if(courseEnrollmentChoice == 0){
+                            break;
+                        }
+                        else {
+                            System.out.println("Enter the name of the course here: ");
+                            String courseName = scanner.next();
+                            student.setEnrolledList(courseName);
+                            System.out.println(studentFirstName + " " + studentLastName + " was enrolled into " + courseName);
+                        }
                     }
-                    else {
-                        student.setEnrolledList(courseName);
+                    else{
+                        System.out.println("Wrong student data, try again.");
                     }
-                    System.out.println(studentFirstName + " " + studentLastName + " was enrolled into " + courseName);
                     break;
                 case 4:
                     System.out.println("Enter the first name of the student.");
                     studentFirstName = scanner.next();
                     System.out.println("Enter the last name of the student.");
                     studentLastName = scanner.next();
-
-                    System.out.println("Enter the year of study.\n");
+                    System.out.println("Enter the year of study.");
                     studentYear = scanner.nextInt();
 
-                    System.out.println(studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear).getEnrolledList());
+                    System.out.println(studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear).getEnrolledListString());
                     break;
                 case 5:
-                    System.out.println("Enter the first name of the student.\n");
+                    System.out.println("Enter the first name of the student.");
                     studentFirstName = scanner.next();
                     System.out.println("Enter the last name of the student.");
                     studentLastName = scanner.next();
 
-                    System.out.println("Enter the year of study.\n");
+                    System.out.println("Enter the year of study.");
                     studentYear = scanner.nextInt();
 
                     int currentStudentBalance = studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear).getBalance();
                     System.out.println("The balance of the student is " + currentStudentBalance);
                     break;
                 case 6:
-                    System.out.println("Enter the first name of the student.\n");
+                    System.out.println("Enter the first name of the student.");
                     studentFirstName = scanner.next();
                     System.out.println("Enter the last name of the student.");
                     studentLastName = scanner.next();
 
-                    System.out.println("Enter the year of study.\n");
+                    System.out.println("Enter the year of study.");
                     studentYear = scanner.nextInt();
 
                     int currentStudentTuition = studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear).getTuition();
                     System.out.println("The balance of the student is " + currentStudentTuition);
                     break;
                 case 7:
-                    System.out.println("Enter the first name of the student.\n");
+                    System.out.println("Enter the first name of the student.");
                     studentFirstName = scanner.next();
                     System.out.println("Enter the last name of the student.");
                     studentLastName = scanner.next();
 
-                    System.out.println("Enter the year of study.\n");
+                    System.out.println("Enter the year of study.");
                     studentYear = scanner.nextInt();
                     String currentStatus = studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear).getStudentRank();
 

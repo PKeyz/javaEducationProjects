@@ -9,10 +9,6 @@ public class StudentArrayList {
 
     }
 
-    public void setStudentArrayList(ArrayList<Student> studentArrayList) {
-        StudentArrayList.studentArrayList = studentArrayList;
-    }
-
     public static void setStudentArrayList(String studentFirstName, String studentLastName, int studentYear) {
         if (studentArrayList.size() == 0) {
             Student student = new Student(studentFirstName,studentLastName, studentYear);
@@ -40,8 +36,12 @@ public class StudentArrayList {
     }
 
     public boolean isStudentInArrayList(String studentFirstName,String studentLastName, int studentYear) {
-        Student student = new Student(studentFirstName,studentLastName, studentYear);
-        return studentArrayList.contains(student);
+        for (Student student: studentArrayList){
+            if (((student.getStudentFirstName().equals(studentFirstName) && student.getStudentLastName().equals(studentLastName) && student.getStudentYear() == studentYear))) {
+                return true;
+            }
+        }
+        return false;
     }
     //.equals getStudentFromArrayList method?
     public void printStudents(){
