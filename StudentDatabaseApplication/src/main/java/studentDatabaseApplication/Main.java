@@ -84,7 +84,7 @@ public class Main {
 
                         StudentArrayList.setStudentArrayList(studentFirstName,studentLastName,studentYear);
                     }
-                    System.out.println("New students have been added.\n");
+                    System.out.println("New students have been added.");
                     break;
                 case 2:
                     if(studentArrayList.seeListSize() == 0){
@@ -104,7 +104,7 @@ public class Main {
                     System.out.println("Enter the year of study.");
                     int studentYear = scanner.nextInt();
 
-                    if(studentArrayList.isStudentInArrayList(studentFirstName,studentLastName,studentYear)){
+                    if(studentArrayList.getStudentArrayList().contains(studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear))){
                         Student student = studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear);
 
                         System.out.println("This is the list of possible courses to choose from, please enter the title of one course name to assign in.\nEach application costs 600$, your balance will be adjusted accordingly.\n\n" + Courses.HISTORY101.getName()+"\n"+Courses.MATHEMATICS101.getName()+"\n"+Courses.PHYSICS101.getName()+"\n"+Courses.ENGLISH101.getName()+"\n"+Courses.CHEMISTRY101.getName()+"\n"+Courses.COMPUTERSCIENCE101.getName());
@@ -125,6 +125,7 @@ public class Main {
                     else{
                         System.out.println("Wrong student data, try again.");
                     }
+
                     break;
                 case 4:
                     System.out.println("Enter the first name of the student.");
