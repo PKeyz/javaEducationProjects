@@ -33,9 +33,9 @@ App requirements:
 
 features needed further to perfect application:
 
-1. add studentSecondName in Student and each class and constructor! / separate scanners for studentSecondName
-2. add "see the course-list" feature
-3. add "add courses" feature
+1. add studentSecondName in Student and each class and constructor! / separate scanners for studentSecondName// done
+2. add "see the course-list" feature //done
+3. add "add courses" feature // done
 4. switch(action) 2 : format the output as " Name: x \nFamily name: y \nStudent UUID : z "
 5. work out the exceptions! got to catch them all!
  */
@@ -175,8 +175,9 @@ public class Main {
                 case 8:
                     System.out.println("Thank you for visiting. You're now exiting the application");
                     isEntering = false;
+                    break;
                 default:
-                    System.out.println("Wrong input, please try again. If you want to exit the application press 6.\n");
+                    System.out.println("Wrong input, please try again. If you want to exit the application press 8.\n");
                     break;
             }
         }
