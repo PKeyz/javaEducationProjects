@@ -1,6 +1,7 @@
 package studentDatabaseApplication;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.UUID;
 
 public class Student {
@@ -9,7 +10,7 @@ public class Student {
     private String studentFirstName;
     private String studentLastName;
     private int studentYear;
-    private ArrayList<Courses> enrolledList = new ArrayList<>();
+    private ArrayList<Optional<Courses>> enrolledList = new ArrayList<Optional<Courses>>();
     private ArrayList<String> enrolledListString = new ArrayList<>();
     private UUID studentUUID = null;
     private int balance = 0;
@@ -27,9 +28,10 @@ public class Student {
 if courses contains course && enrolledList !contains course -> enroll
  */
     public void setEnrolledList(String courseName) {
-        if ( (Courses.getCourse(courseName) && (!getEnrolledListString().contains(courseName)) & (!getEnrolledListString().contains(courseName))) {
+        Optional<Courses> course = Courses.getCourse(courseName);
+        if ( course.isPresent() && (!getEnrolledListString().contains(courseName)) & (!getEnrolledListString().contains(courseName))) {
 
-            enrolledList.add(Courses.valueOf(courseName));
+            enrolledList.add(course);
             enrolledListString.add(courseName);
 
             setBalance(balance - 600);
@@ -40,13 +42,9 @@ if courses contains course && enrolledList !contains course -> enroll
         }
     }
     public ArrayList <String> getEnrolledListString(){
-
-        for (Courses courses : enrolledList) {
-            enrolledListString.add(courses.getName());
-        }
         return enrolledListString;
     }
-    public ArrayList<Courses> getEnrolledList() {
+    public ArrayList<Optional<Courses>> getEnrolledList() {
         return enrolledList;
     }
 
