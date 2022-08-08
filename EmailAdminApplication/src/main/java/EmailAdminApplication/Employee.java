@@ -15,7 +15,7 @@ public class Employee {
         this.department = department;
     }
     public void generateEmailAddress(){
-        this.emailAddress = firstName + lastName + "@" + department + ".company.com";
+        this.emailAddress = firstName.toLowerCase() + lastName.toLowerCase() + "@" + department.toLowerCase() + ".company.com";
     }
 
     public String getFirstName() {
