@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="StudentDatabaseApplication" />
         <module name="bankingApp" />
+        <module name="EmailAdministrationApplication" />
       </profile>
     </annotationProcessing>
   </component>
