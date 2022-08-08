@@ -31,23 +31,7 @@ public enum Courses {
                 .filter(courses -> courses.name.equals(courseName))
                 .findFirst();
     }
-    public static String toCourseName(String name) {
-        String courseName;
-        for (Courses course : values()) {
-            if (course.getName().equals(name)) {
-                courseName = name;
-                return courseName;
-            }
-        }
-        return null;
-    }
-    public static boolean isInCourseList(String name){
-        for(Courses course : Courses.values()){
-            if(course.getName().equals(name));
-                return true;
-        }
-        return false;
-    }
+
     @Override
     public String toString(){
         return  name;

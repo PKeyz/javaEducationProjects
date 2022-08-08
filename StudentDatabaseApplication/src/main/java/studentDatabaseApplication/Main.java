@@ -164,6 +164,7 @@ public class Main {
 
                     int currentStudentTuition = studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear).getTuition();
                     System.out.println("The balance of the student is " + studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear).getBalance());
+                    System.out.println("The tuition fees of the student are: " + currentStudentTuition);
                     System.out.println("Would you like to pay now?\nPrint 1 for YES and 0 for NO");
                     int tuitionPaymentChoice = scanner.nextInt();
 

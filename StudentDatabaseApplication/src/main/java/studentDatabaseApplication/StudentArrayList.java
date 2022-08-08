@@ -31,34 +31,13 @@ public class StudentArrayList {
         return studentArrayList;
     }
 
-    public void getStudentCoursesFromArrayList(String studentFirstName,String studentLastName, int studentYear) {
-        for (Student student : studentArrayList) {
-            if (((student.getStudentFirstName().equals(studentFirstName) && student.getStudentLastName().equals(studentLastName) && student.getStudentYear() == studentYear) && studentArrayList.contains(student))) {
-                System.out.println(student.getEnrolledListString() + "\n");
-            }
-        }
-    }
-
-    public boolean isStudentInArrayList(String studentFirstName,String studentLastName, int studentYear) {
-
-        boolean isInArrayList = false;
-        for (Student student : studentArrayList) {
-            if (student.getStudentFirstName().equals(studentFirstName) && student.getStudentLastName().equals(studentLastName) && student.getStudentYear() == studentYear) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        return isInArrayList;
-    }
     public void printStudents(){
         for(Student student : studentArrayList){
             System.out.println(student.getStudentFirstName() + " " + student.getStudentLastName() + " " + student.getStudentRank() + " " + student.getStudentUUID());
         }
     }
     public Student getStudentFromArrayList (String studentFirstName,String studentLastName, int studentYear) {
-        Student student1 = null;
+        Student student1;
         for(Student student : studentArrayList){
             if (student.getStudentFirstName().equals(studentFirstName) && student.getStudentLastName().equals(studentLastName) && student.getStudentYear() == studentYear) {
                 student1 = student;
