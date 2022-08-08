@@ -3,6 +3,10 @@ package studentDatabaseApplication;
 import java.util.Arrays;
 import java.util.Optional;
 
+/**
+ * asen on https://www.youtube.com/watch?v=GOGt7PACl10
+ * https://howtodoinjava.com/java/enum/java-enum-string-example/
+ */
 public enum Courses {
     HISTORY101("History"),
     MATHEMATICS101("Mathematics"),
