@@ -1,4 +1,4 @@
-package studentDatabaseApplication;
+package EmailAdminApplication;
 
 import java.util.ArrayList;
 
