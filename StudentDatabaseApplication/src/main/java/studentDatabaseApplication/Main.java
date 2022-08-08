@@ -15,7 +15,7 @@ App requirements:
 
 - user should be prompted to enter the:  name/year for each student (1.freshman 2.sophomore 3. senior)
 
-- student has a 5 digit UID ,  first num being their grade level
+- student has a 5 digit UID ,  first num being their grade level -> replaced with a real UUID
 - student can enroll in classes:
 
 -History 101
@@ -42,10 +42,7 @@ public class Main {
         StudentArrayList studentArrayList = new StudentArrayList();
         boolean isEntering = true;
 
-        while(isEntering){
-            Scanner scanner = new Scanner(System.in);
-
-            System.out.println("""
+        System.out.println("""
                     Welcome to the StudentDatabaseApplication.
                     
                     Press a number for the action you want to take:
@@ -53,15 +50,15 @@ public class Main {
                     Press 2 to see all the students in the database.
                     Press 3 to enroll a student into a course.
                     Press 4 to see the courses of a student.
-                    //Press x to set balance of the student.
-                    Press 5 to see the balance of a student.
-                    //Press 6 to increase the balance of a student.
-                    Press 6 to see the tuition fees of a student.
+                    Press 5 to edit the balance of a student.
+                    Press 6 to get information on the tuition fees of a student.
                     Press 7 to see the status of a student.
-                    Press 8 to exit the application.
-                    Enter your option here:""");
+                    Press 8 to exit the application.""");
 
+        while(isEntering){
+            Scanner scanner = new Scanner(System.in);
 
+            System.out.println("Choose action: ");
             int action = scanner.nextInt();
 
             switch (action){
@@ -103,7 +100,7 @@ public class Main {
                     if(studentArrayList.getStudentArrayList().contains(studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear))){
                         Student student = studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear);
 
-                        System.out.println("This is the list of possible courses to choose from, please enter the title of one course name to assign in.\nEach application costs 600$, your balance will be adjusted accordingly.\n\n" + Courses.HISTORY101.getName()+"\n"+Courses.MATHEMATICS101.getName()+"\n"+Courses.PHYSICS101.getName()+"\n"+Courses.ENGLISH101.getName()+"\n"+Courses.CHEMISTRY101.getName()+"\n"+Courses.COMPUTERSCIENCE101.getName()+ "\n"+ "Should student " + studentFirstName + " " + studentLastName + " be enrolled in one of these courses? \nPlease enter 1 for YES and 2 for NO");
+                        System.out.println("This is the list of possible courses to choose from, please enter the title of one course name to assign in.\nEach application costs 600$, your tuition fees will be adjusted accordingly.\n\n" + Courses.HISTORY101.getName()+"\n"+Courses.MATHEMATICS101.getName()+"\n"+Courses.PHYSICS101.getName()+"\n"+Courses.ENGLISH101.getName()+"\n"+Courses.CHEMISTRY101.getName()+"\n"+Courses.COMPUTERSCIENCE101.getName()+ "\n"+ "Should student " + studentFirstName + " " + studentLastName + " be enrolled in one of these courses?\n\nPlease enter 1 for YES and 0 for NO");
 
                         int courseEnrollmentChoice = scanner.nextInt();
 
@@ -115,6 +112,7 @@ public class Main {
                             String courseName = scanner.next();
                             student.setEnrolledList(courseName);
                             System.out.println(studentFirstName + " " + studentLastName + " was enrolled into " + courseName);
+                            System.out.println("New tuition fees amount is $ " + student.getTuition());
                         }
                     }
                     else{
@@ -137,12 +135,23 @@ public class Main {
                     studentFirstName = scanner.next();
                     System.out.println("Enter the last name of the student.");
                     studentLastName = scanner.next();
-
                     System.out.println("Enter the year of study.");
                     studentYear = scanner.nextInt();
 
                     int currentStudentBalance = studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear).getBalance();
                     System.out.println("The balance of the student is " + currentStudentBalance);
+                    System.out.println("Would you like to add money to the current balance?\nPrint 1 for YES and 0 for NO");
+                    int editBalanceChoice = scanner.nextInt();
+
+                    if(editBalanceChoice == 0){
+                        break;
+                    }
+                    else {
+                        System.out.println("Amount of $ to add to balance");
+                        int addToBalance = scanner.nextInt();
+                        studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear).addBalance(addToBalance);
+                        System.out.println("Your current balance is: " + studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear).getBalance());
+                    }
                     break;
                 case 6:
                     System.out.println("Enter the first name of the student.");
@@ -154,22 +163,44 @@ public class Main {
                     studentYear = scanner.nextInt();
 
                     int currentStudentTuition = studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear).getTuition();
-                    System.out.println("The balance of the student is " + currentStudentTuition);
+                    System.out.println("The balance of the student is " + studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear).getBalance());
+                    System.out.println("Would you like to pay now?\nPrint 1 for YES and 0 for NO");
+                    int tuitionPaymentChoice = scanner.nextInt();
+
+                    if(tuitionPaymentChoice == 0){
+                        break;
+                    }
+                    else {
+                        System.out.println("How much would you like to pay?");
+                        int paymentAmount = scanner.nextInt();
+                        System.out.println("Amount to pay " + paymentAmount);
+                        System.out.println("Please confirm 1 for YES and 0 for NO\n");
+                        int tuitionPaymentConfirmation = scanner.nextInt();
+
+                        if(tuitionPaymentConfirmation == 0) {
+                            break;
+                        }
+                        else {
+                            studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear).reduceBalance(paymentAmount);
+                            studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear).reduceTuition(paymentAmount);
+                            System.out.println("Your current tuition fees are: " + studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear).getTuition());
+                        }
+
+                    }
                     break;
                 case 7:
                     System.out.println("Enter the first name of the student.");
                     studentFirstName = scanner.next();
                     System.out.println("Enter the last name of the student.");
                     studentLastName = scanner.next();
-
                     System.out.println("Enter the year of study.");
                     studentYear = scanner.nextInt();
-                    String currentStatus = studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear).getStudentRank();
 
-                    System.out.println("The status of the student is " + currentStatus +"\n");
+                    studentArrayList.getStudentFromArrayList(studentFirstName,studentLastName,studentYear).printStudentData();
+
                     break;
                 case 8:
-                    System.out.println("Thank you for visiting. You're now exiting the application");
+                    System.out.println("Thank you for visiting and happy studies!");
                     isEntering = false;
                     break;
                 default:

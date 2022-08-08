@@ -5,16 +5,15 @@ import java.util.Optional;
 import java.util.UUID;
 
 public class Student {
-
-    //private final ArrayList<String> courseList = new ArrayList<String>("History","Mathematics","Physics","English","");
     private String studentFirstName;
     private String studentLastName;
     private int studentYear;
-    private ArrayList<Optional<Courses>> enrolledList = new ArrayList<Optional<Courses>>();
+    private ArrayList<Optional<Courses>> enrolledList = new ArrayList<>();
     private ArrayList<String> enrolledListString = new ArrayList<>();
     private UUID studentUUID = null;
     private int balance = 0;
     private int tuition = 0;
+    private static final int courseCost = 600;
 
     public Student(){
     }
@@ -24,22 +23,26 @@ public class Student {
         this.studentYear = studentYear;
         this.studentUUID = UUID.randomUUID();
     }
-/*
-if courses contains course && enrolledList !contains course -> enroll
- */
     public void setEnrolledList(String courseName) {
         Optional<Courses> course = Courses.getCourse(courseName);
-        if ( course.isPresent() && (!getEnrolledListString().contains(courseName)) & (!getEnrolledListString().contains(courseName))) {
+        if ( course.isPresent() && (!getEnrolledListString().contains(courseName)) && (!getEnrolledList().contains(course))) {
 
             enrolledList.add(course);
             enrolledListString.add(courseName);
 
-            setBalance(balance - 600);
-            setTuition(tuition + 600);
+            addTuition(courseCost);
         }
         else{
             System.out.println("The student is already enrolled in this course.");
         }
+    }
+    public void printStudentData(){
+        System.out.println("First name: " + studentFirstName);
+        System.out.println("Last name: " + studentLastName);
+        System.out.println("Student rank: " + getStudentRank());
+        System.out.println("Student UUID: " + studentUUID);
+        System.out.println("Student balance: " + getBalance());
+        System.out.println("Student tuition: " + getTuition());
     }
     public ArrayList <String> getEnrolledListString(){
         return enrolledListString;
@@ -77,16 +80,22 @@ if courses contains course && enrolledList !contains course -> enroll
         return balance;
     }
 
-    public void setBalance(int balance) {
-        this.balance = balance;
+    public void addBalance(int paymentIn) {
+        this.balance += paymentIn;
+    }
+    public void reduceBalance(int paymentOut){
+        this.balance -= paymentOut;
     }
 
     public int getTuition() {
         return tuition;
     }
 
-    public void setTuition(int tuition) {
-        this.tuition = tuition;
+    public void addTuition(int amountTuition) {
+        this.tuition += amountTuition;
+    }
+    public void reduceTuition(int amountTuition) {
+        this.tuition -= amountTuition;
     }
 
 }

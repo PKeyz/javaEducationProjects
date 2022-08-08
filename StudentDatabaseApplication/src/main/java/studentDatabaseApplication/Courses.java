@@ -4,7 +4,8 @@ import java.util.Arrays;
 import java.util.Optional;
 
 /**
- * asen on https://www.youtube.com/watch?v=GOGt7PACl10
+ * @author Morr 08.2022
+ * project idea from https://www.youtube.com/watch?v=GOGt7PACl10
  * https://howtodoinjava.com/java/enum/java-enum-string-example/
  */
 public enum Courses {
@@ -13,7 +14,7 @@ public enum Courses {
     PHYSICS101("Physics"),
     ENGLISH101("English"),
     CHEMISTRY101("Chemistry"),
-    COMPUTERSCIENCE101("Computer Science");
+    COMPUTERSCIENCE101("Computer-Science");
 
     private final String name;
 
@@ -25,20 +26,11 @@ public enum Courses {
         return this.name;
     }
 
-      public static Optional<Courses> getCourse(String courseName){
+    public static Optional<Courses> getCourse(String courseName){
         return Arrays.stream(Courses.values())
                 .filter(courses -> courses.name.equals(courseName))
                 .findFirst();
     }
-    /*
-    public static Courses toCourse(String name) {
-        for (Courses course : values()) {
-            if (course.getName().equals(name)) return course.valueOf(name);
-        }
-        return null;
-    }
-
-     */
     public static String toCourseName(String name) {
         String courseName;
         for (Courses course : values()) {

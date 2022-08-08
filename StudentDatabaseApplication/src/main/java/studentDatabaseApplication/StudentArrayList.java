@@ -28,19 +28,20 @@ public class StudentArrayList {
     }
 
     public ArrayList<Student> getStudentArrayList(){
-        return this.studentArrayList;
+        return studentArrayList;
     }
 
     public void getStudentCoursesFromArrayList(String studentFirstName,String studentLastName, int studentYear) {
         for (Student student : studentArrayList) {
             if (((student.getStudentFirstName().equals(studentFirstName) && student.getStudentLastName().equals(studentLastName) && student.getStudentYear() == studentYear) && studentArrayList.contains(student))) {
-                System.out.println(student.getEnrolledList() + "\n");
+                System.out.println(student.getEnrolledListString() + "\n");
             }
         }
     }
 
     public boolean isStudentInArrayList(String studentFirstName,String studentLastName, int studentYear) {
 
+        boolean isInArrayList = false;
         for (Student student : studentArrayList) {
             if (student.getStudentFirstName().equals(studentFirstName) && student.getStudentLastName().equals(studentLastName) && student.getStudentYear() == studentYear) {
                 return true;
@@ -48,7 +49,8 @@ public class StudentArrayList {
                 return false;
             }
         }
-        return Boolean.parseBoolean(null);
+
+        return isInArrayList;
     }
     public void printStudents(){
         for(Student student : studentArrayList){
