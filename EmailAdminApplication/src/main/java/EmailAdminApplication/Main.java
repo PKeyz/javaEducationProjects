@@ -10,7 +10,6 @@ public class Main {
 
     /**
      * https://www.youtube.com/watch?v=U3Ibvu0htNs&list=PLG7VJOKS5_G0usTijS3rIIRiCF32v5uHq
-     *
      * Scenario: create email accounts for new hires
      * 1.Generate an email with the following syntax: firstname.lastname@department.company.com
      * 2.Determine the department (sales,development,accounting,it), if none leave blank
@@ -36,8 +35,6 @@ public class Main {
             System.out.println("EmailAdminApplication.Department: " + employee.getDepartment());
 
             employee.generateEmailAddress();
-            System.out.println("The new email address of " + employee.getLastName() + " " + employee.getFirstName() + " " +"is " + employee.getEmailAddress() );
-            emailList.getEmailList().add(employee.getEmailAddress());
-            System.out.println("The Email address was added to the database.");
+
         }
     }

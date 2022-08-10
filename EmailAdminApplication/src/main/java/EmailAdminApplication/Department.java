@@ -1,6 +1,6 @@
 package EmailAdminApplication;
 
-import java.lang.reflect.Array;
+import java.util.Scanner;
 
 public class Department {
 
@@ -8,5 +8,15 @@ public class Department {
 
     public static String[] getDepartment() {
         return department;
+    }
+
+    public String getDepartmentFromEmail(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter an email.");
+
+        String s = scanner.next();
+        String requiredString = s.substring(s.indexOf("@")+1 , s.indexOf("."));
+
+        return requiredString;
     }
 }

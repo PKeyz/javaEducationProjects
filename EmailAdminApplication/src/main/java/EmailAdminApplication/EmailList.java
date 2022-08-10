@@ -1,18 +1,19 @@
 package EmailAdminApplication;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class EmailList {
-    private ArrayList<String> emailList = new ArrayList<>();
+    private static LinkedList<String> emailList = new LinkedList<>();
 
     public EmailList () {}
 
 
-    public ArrayList<String> getEmailList() {
+    public static LinkedList<String> getEmailList() {
         return emailList;
     }
 
-    public void setEmailList(ArrayList<String> emailList) {
-        this.emailList = emailList;
+    public void setEmailList(String email) {
+        getEmailList().add(email);
     }
 }
