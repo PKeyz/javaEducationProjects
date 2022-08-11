@@ -5,9 +5,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-
-
     /**
      * https://www.youtube.com/watch?v=U3Ibvu0htNs&list=PLG7VJOKS5_G0usTijS3rIIRiCF32v5uHq
      * Scenario: create email accounts for new hires
@@ -19,7 +16,6 @@ public class Main {
 
             Employee employee = new Employee();
             Scanner scanner = new Scanner(System.in);
-            EmailList emailList = new EmailList();
 
             System.out.println("Set new employees first name: ");
             employee.setFirstName(scanner.next());
@@ -29,12 +25,17 @@ public class Main {
             employee.setLastName(scanner.next());
             System.out.println("Last name: " + employee.getLastName());
 
+            employee.generatePassword(10);
+
             System.out.println("Departments in company: \n" + Arrays.toString(Department.getDepartment()));
             System.out.println("Set new employees department: ");
             employee.setDepartment(scanner.next());
             System.out.println("EmailAdminApplication.Department: " + employee.getDepartment());
 
             employee.generateEmailAddress();
+            System.out.println("Your new password is: " + employee.getPassword());
+
+            employee.showInfo();
 
         }
     }

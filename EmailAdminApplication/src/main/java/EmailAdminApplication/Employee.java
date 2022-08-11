@@ -1,20 +1,19 @@
 package EmailAdminApplication;
 
+import java.util.Scanner;
+
 public class Employee {
 
     private String firstName;
     private String lastName;
     private String department;
     private String emailAddress;
+    private String alternateEmailAddress;
     private String password;
-    private int mailboxCapacity;
+    private int maxMailboxCapacity = 100;
+    private int currentEmailCapacity;
 
     public Employee(){}
-
-    /**
-     * 3.Have set methods to change password, set mailbox capacity, define alternate email address
-     * 4.get methods to display name email and mailbox capacity
-     */
 
     public Employee(String firstName,String lastName,String department){
         this.firstName = firstName;
@@ -27,15 +26,22 @@ public class Employee {
         EmailList.getEmailList().add(getEmailAddress());
         System.out.println("The Email address was added to the database.");
     }
-
-    public String generatePassword(int length){
+    public void generateAlternateEmailAddress(){
+        System.out.println("Print your new alternative email address here: ");
+        Scanner scanner = new Scanner(System.in);
+        alternateEmailAddress = scanner.next();
+    }
+    public void generatePassword(int length){
         String passwordSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*(";
         char[] password = new char[length];
         for(int i = 0; i < length; i++){
             int rand = (int) (Math.random() * passwordSet.length());
             password[i] = passwordSet.charAt(rand);
         }
-        return new String(password);
+        this.password = String.valueOf(password);
+    }
+    public void printEmail(){
+        System.out.println("The Email address is: " + emailAddress + "\nThe Emailcapacity is:" + (maxMailboxCapacity - currentEmailCapacity));
     }
     public String getFirstName() {
         return firstName;
@@ -67,6 +73,7 @@ public class Employee {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+
     }
 
     public String getPassword() {
@@ -77,11 +84,13 @@ public class Employee {
         this.password = password;
     }
 
-    public int getMailboxCapacity() {
-        return mailboxCapacity;
+    public int getMaxMailboxCapacity() {
+        return maxMailboxCapacity;
     }
-
-    public void setMailboxCapacity(int mailboxCapacity) {
-        this.mailboxCapacity = mailboxCapacity;
+    public void setMaxMailboxCapacity(int newCapacity){
+        this.maxMailboxCapacity = newCapacity;
+    }
+    public void showInfo(){
+        System.out.println("DISPLAY NAME: " + firstName + " " + lastName + "\nDISPLAY EMAIL: " + emailAddress + "\nDISPLAY EMAIL CAPACITY: " + maxMailboxCapacity);
     }
 }
