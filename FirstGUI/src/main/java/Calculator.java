@@ -35,8 +35,8 @@ public class Calculator implements ActionListener{
          divButton = new JButton("/");
          decimalButton = new JButton(".");
          equalsButton = new JButton("=");
-         deleteButton = new JButton("del");
-         clearButton = new JButton("clear");
+         deleteButton = new JButton("Delete");
+         clearButton = new JButton("Clear");
 
          functionButtons[0] = addButton;
          functionButtons[1] = subButton;
@@ -55,6 +55,7 @@ public class Calculator implements ActionListener{
 
         for (int i = 0; i < 10; i++){
             numberButtons[i] = new JButton(String.valueOf(i));
+            numberButtons[i].addActionListener(this);
             numberButtons[i].setFont(myFont);
             numberButtons[i].setFocusable(false);
         }
@@ -99,6 +100,9 @@ public class Calculator implements ActionListener{
             if (e.getSource() == numberButtons[i]) {
               textField.setText(textField.getText().concat(String.valueOf(i)));
             }
+        }
+        if(e.getSource() == decimalButton){
+            textField.setText(textField.getText().concat(String.valueOf(".")));
         }
     }
 }
