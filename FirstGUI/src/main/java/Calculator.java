@@ -8,7 +8,7 @@ public class Calculator implements ActionListener{
     JFrame frame;
     JTextField textField;
     JButton[] numberButtons = new JButton[10];
-    JButton[] functionButtons = new JButton[8];
+    JButton[] functionButtons = new JButton[9];
     JButton addButton,subButton,mulButton,divButton;
     JButton decimalButton,equalsButton,deleteButton,clearButton,negButton;
     JPanel panel;
@@ -154,6 +154,11 @@ public class Calculator implements ActionListener{
             for(int i = 0; i < string.length()-1; i++){
                 textField.setText(textField.getText() + string.charAt(i));
             }
+        }
+        if(e.getSource() == negButton){
+            double temp = Double.parseDouble(textField.getText());
+            temp *= -1;
+            textField.setText(String.valueOf(temp));
         }
     }
 }
