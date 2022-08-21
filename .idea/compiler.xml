@@ -10,6 +10,7 @@
         <module name="bankingApp" />
         <module name="EmailAdminApplication" />
         <module name="StudentDatabaseApplication" />
+        <module name="Timer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
