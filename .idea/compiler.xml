@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="FirstGUI" />
-        <module name="bankingApp" />
         <module name="EmailAdminApplication" />
         <module name="StudentDatabaseApplication" />
         <module name="Timer" />
+        <module name="SimpleEncryptionProgram" />
+        <module name="JavaTextEditorApp" />
+        <module name="FirstGUI" />
+        <module name="bankingApp" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
