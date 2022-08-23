@@ -92,23 +92,31 @@ public class EncryptionProgram {
         for(char x: letters){
             System.out.print(x);
         }
-        System.out.println("/n");
+        System.out.println();
     }
     private void decrypt(){
         System.out.println("Enter a message to be decrypted: ");
 
-        String decryptedMessage;
-
         String messageToDecrypt = scanner.nextLine();
-        messageToDecrypt.toCharArray();
+        letters = messageToDecrypt.toCharArray();
 
-        for(int i = 0; i < messageToDecrypt.length(); i++ ){
-            if(messageToDecrypt.charAt(i) == shuffledList.get(i)){
-                //decryptedMessage.concat(messageToDecrypt.charAt(i));
+        for(int i = 0; i < letters.length; i++ ){
+
+            for(int j = 0; j < shuffledList.size(); j++ ){
+                if(letters[i] == shuffledList.get(j)){
+                    letters[i] = list.get(j);
+                    break;
+                }
             }
         }
+        System.out.println("Decrypted: ");
+        for(char x : letters) {
+            System.out.print(x);
+        }
+        System.out.println();
     }
     private void quit(){
-
+        System.out.println("Thank you and have a nice day!");
+        System.exit(0);
     }
 }
