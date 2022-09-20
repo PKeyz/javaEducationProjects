@@ -13,6 +13,7 @@
         <module name="JavaTextEditorApp" />
         <module name="FirstGUI" />
         <module name="bankingApp" />
+        <module name="JavaClockApp" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
