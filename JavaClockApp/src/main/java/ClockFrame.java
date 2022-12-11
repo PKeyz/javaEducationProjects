@@ -26,7 +26,7 @@ public class ClockFrame extends JFrame {
     Font font = new Font("Helvetica Neue", Font.PLAIN,14);
 
     //constructor with actual frame
-    ClockFrame() throws FontFormatException {
+    ClockFrame() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("MyClockApp");
         this.setLayout(new FlowLayout());
